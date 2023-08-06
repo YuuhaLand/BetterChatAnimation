@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Better Chat Animation",
+    "description": "HUDのチャットを良い感じのアニメーションで表示します\nby YukaYama0311",
+    "version": [ 1, 0, 0 ],
+    "uuid": "1f94b1ec-a2f6-48c8-bf61-28011f0d4637",
+    "min_engine_version": [ 1, 13, 0 ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "description": "",
+      "version": [ 1, 0, 0 ],
+      "uuid": "086cdbd2-1d44-4ea3-bdb3-993a1c78497c"
+    }
+  ]
+}

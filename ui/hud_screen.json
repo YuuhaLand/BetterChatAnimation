@@ -1,0 +1,151 @@
+{
+  "namespace": "hud",
+
+  // チャットの背景の透明度アニメーション
+  "anim_chat_bg_alpha_in": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "next": "anim_chat_bg_alpha_wait",
+    "duration": 0.25,
+    "from": 0,
+    "to": 0.7
+  },
+
+  "anim_chat_bg_alpha_wait": {
+    "anim_type": "wait",
+    "duration": "$chat_item_lifetime",
+    "next": "@hud.anim_chat_bg_alpha_out"
+  },
+
+  "anim_chat_bg_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.25,
+    "from": 0.7,
+    "to": 0
+  },
+
+
+
+  // チャットの背景をずらすアニメーション
+  "anim_chat_bg_offset_in": {
+    "anim_type": "offset",
+    "easing": "out_quad",
+    "duration": 0.25,
+    "from": [ 50, 0 ],
+    "to": [ 0, 0 ],
+    "next": "anim_chat_bg_offset_wait"
+  },
+
+  "anim_chat_bg_offset_wait": {
+    "anim_type": "wait",
+    "duration": "$chat_item_lifetime",
+    "next": "@hud.anim_chat_bg_offset_out"
+  },
+
+  "anim_chat_bg_offset_out": {
+    "anim_type": "offset",
+    "easing": "in_quart",
+    "duration": 0.25,
+    "from": [ 0, 0 ],
+    "to": [ -50, 0 ],
+    "next": "@hud.anim_chat_bg_size"
+  },
+
+  // チャットの背景をアニメーションで小さくして下のチャットの文字を上にスライドさせる
+  "anim_chat_bg_size": {
+    "anim_type": "size",
+    "easing": "out_quart",
+    "destroy_at_end": "chat_grid_item",
+    "duration": 0.2,
+    "from": [ "100%", "100%c" ],
+    "to": [ "100%", 0 ]
+  },
+
+
+
+  // チャットの文字の透明度アニメーション
+  "anim_chat_txt_alpha_in": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.25,
+    "from": 0,
+    "to": 1,
+    "next": "@hud.anim_chat_txt_alpha_wait"
+  },
+
+  "anim_chat_txt_alpha_wait": {
+    "anim_type": "wait",
+    "duration": "$chat_item_lifetime",
+    "next": "@hud.anim_chat_txt_alpha_out"
+  },
+  
+  "anim_chat_txt_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.25,
+    "from": 1,
+    "to": 0
+  },
+
+
+  "chat_panel": {
+    "controls": [
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "factory": {
+            "name": "chat_item_factory",
+            "max_children_size": 50,
+            "control_ids": {
+              "chat_item": "chat_item@hud.chat_grid_item_anim"
+            }
+          }
+        }
+      }
+    ]
+  },
+
+  //Hiveとかだと上手く反映されないので別名のパネルを用意
+  "chat_grid_item_anim": {
+    "type": "panel",
+    "layer": 1,
+    "size": [ "100%-2px", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "bindings": [
+      {
+        "binding_name": "(not #on_new_death_screen)",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "chat_background": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "alpha": 0.7,
+          "size": [ "100%", "100%c" ],
+          "anims": [
+            "@hud.anim_chat_bg_alpha_in",
+            "@hud.anim_chat_bg_offset_in"
+          ],
+          "controls": [
+            {
+              "chat_text@chat_label": {
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 2, 0 ],
+                "anims": [
+                  "@hud.anim_chat_txt_alpha_in"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
