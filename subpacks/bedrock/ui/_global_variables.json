@@ -1,0 +1,11 @@
+{
+  "$chat_java_style": false,
+  "$chat_bg_anims": [
+    "@hud.anim_chat_bg_alpha_in",
+    "@hud.anim_chat_bg_offset_in",
+    "@hud.anim_chat_bg_size"
+  ],
+  "$chat_text_anims": [
+    "@hud.anim_chat_txt_wait"
+  ]
+}

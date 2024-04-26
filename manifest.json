@@ -1,18 +1,29 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Better Chat Animation",
-    "description": "HUDのチャットを良い感じのアニメーションで表示します\nby YukaYama0311",
-    "version": [ 1, 0, 0 ],
-    "uuid": "1f94b1ec-a2f6-48c8-bf61-28011f0d4637",
+    "name": "HUDチャット アニメーション",
+    "description": "HUDのチャットにアニメーションを追加します！\nby YuuhaLand",
+    "uuid": "293539a8-364b-4e3b-9c88-fa00f6f2fb4b",
+    "version": [ 1, 0, 1 ],
     "min_engine_version": [ 1, 13, 0 ]
   },
   "modules": [
     {
       "type": "resources",
-      "description": "",
-      "version": [ 1, 0, 0 ],
-      "uuid": "086cdbd2-1d44-4ea3-bdb3-993a1c78497c"
+      "uuid": "719021e5-aab0-4320-baef-c2eb520dd014",
+      "version": [ 1, 0, 1 ]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "java",
+      "name": "HUDチャットの配置: §6Java版風",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "bedrock",
+      "name": "HUDチャットの配置: §aデフォルト",
+      "memory_tier": 2
     }
   ]
 }
